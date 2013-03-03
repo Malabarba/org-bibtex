@@ -9,8 +9,8 @@
 ;;
 ;; Unfortunately it only understands a few URLs right now. If you'd
 ;; like to improve it in this sense, the only thing you need to do is
-;; add extra clauses in the `org/extract-doi' function (once the doi
-;; is extracted everything else is pretty automatic).
+;; add extra clauses in the `org/extract-doi' function and the 
+;; `org/paper-url' function.
 
 (defcustom org/pdf-paper-download-folder "~/Dropbox/Papers/" 
   "Directory where pdf files will be saved. They are save as
