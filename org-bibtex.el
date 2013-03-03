@@ -108,7 +108,15 @@ the file or the function will fail."
    ((string-match "^.*nature.com/.*$" url)
     (replace-regexp-in-string "\.html" ".pdf"
                               (replace-regexp-in-string "/\\(abs\\|full\\)/" "/pdf/" url)))
-   ))
+   ((string-match "^.*iop.org/.*$" url)
+    (concat url "pdf/"
+            (replace-regexp-in-string
+             "/" "_"
+             (replace-regexp-in-string "^.*iop.org/\\(.*\\)/" "\\1" url))
+            ".pdf"))
+   ((string-match "^.*aps\.org/.*/v[0-9]*/.*/e[0-9]*$" url)
+    (replace-regexp-in-string "abstract" "pdf" url)
+    (message "Can't download files from aps.org. Download manually and save as \"Paper Title.pdf\"."))))
 
 (defun org/extract-bibtex-property (name &optional url)
   "Get the value for the property named NAME from the bibtex in
